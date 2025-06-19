@@ -522,31 +522,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         switch (keycode) {
             case KC_C: // Chrome
                 tap_code16(LGUI(KC_1));
-                // win_launch_app(KC_1);
                 break;
             case KC_S: // Slack
                 tap_code16(LGUI(KC_2));
-                // win_launch_app(KC_2);
                 break;
             case KC_F: // Explorer
                 tap_code16(LGUI(KC_3));
-                // win_launch_app(KC_3);
                 break;
             case KC_E: // memo
                 tap_code16(LGUI(KC_4));
-                // win_launch_app(KC_4);
                 break;
             case KC_D: // PowerPoint
                 tap_code16(LGUI(KC_5));
-                // win_launch_app(KC_0);
                 break;
             case KC_X: // Excel
                 tap_code16(LGUI(KC_8));
-                // win_launch_app(KC_8);
                 break;
             case KC_T: // Teams
                 tap_code16(LGUI(KC_9));
-                // win_launch_app(KC_9);
                 break;
             default:
                 // その他（そのまま）
