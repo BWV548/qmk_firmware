@@ -131,11 +131,9 @@ static void send_shift_caps_win(void) {
     wait_ms(30);
     unregister_code(KC_LSFT);
 }
-/* フラグが false のときだけ Enter を送信する */
-static void enter_jp_only(void) {
-    if (!m_is_english && layer_state_is(MAC_BASE)) {
-        tap_code(KC_ENT);
-    } else if (!w_is_english && layer_state_is(WIN_BASE)) {
+/* CAPS レイヤー中のみ Enter を送信する */
+static void enter_if_caps_layer(void) {
+    if (layer_state_is(MAC_CAPS) || layer_state_is(WIN_CAPS)) {
         tap_code(KC_ENT);
     }
 }
@@ -152,7 +150,7 @@ static void brackets_mods_shift(uint16_t lbrac, uint16_t rbrac) {
     tap_code16(lbrac);  // '('
     tap_code16(rbrac);  // ')'
     wait_ms(10);
-    enter_jp_only();
+    enter_if_caps_layer();
     wait_ms(10);
     tap_code16(KC_LEFT);
 
@@ -371,9 +369,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         /* かっこ系 */
         // ()
         case KC_9:
+        case KC_F9:
             if (get_mods() & MOD_MASK_SHIFT) {
-                brackets_mods_shift(LSFT(KC_9), LSFT(KC_0));
-                return false;
+                bool caps_layer = layer_state_is(MAC_CAPS) || layer_state_is(WIN_CAPS);
+                if (caps_layer) {
+                    if (keycode == KC_F9 && !layer_state_is(FN2)) {
+                        brackets_mods_shift(LSFT(KC_9), LSFT(KC_0));
+                        return false;
+                    }
+                    // CAPS + FN2 のときは通常の F9 入力に任せる
+                    return true;
+                }
+                if (keycode == KC_9) {
+                    brackets_mods_shift(LSFT(KC_9), LSFT(KC_0));
+                    return false;
+                }
             }
             return true; // 普通に送る
         // 「」と『』と[]と{}
@@ -383,7 +393,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code16(KC_LBRC);    // '「'
                 tap_code16(KC_RBRC);    // '」'
                 wait_ms(20);
-                enter_jp_only();
+                enter_if_caps_layer();
                 wait_ms(20);
                 tap_code16(KC_LEFT);
             // shiftあり（win）※winで要設定
@@ -395,7 +405,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 wait_ms(20);
                 tap_code16(KC_SPC);
                 wait_ms(20);
-                enter_jp_only();
+                enter_if_caps_layer();
             // shiftあり（mac）
             } else {
                 brackets_mods_shift(LSFT(KC_LBRC), LSFT(KC_RBRC));
@@ -407,7 +417,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code16(KC_QUOT);    // '
                 tap_code16(KC_QUOT);    // '
                 wait_ms(20);
-                enter_jp_only();
+                enter_if_caps_layer();
                 wait_ms(20);
                 tap_code16(KC_LEFT);
             } else {
