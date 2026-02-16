@@ -230,15 +230,15 @@ MO(WIN_CAPS), KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J, 
 /* CAPS */
 [MAC_CAPS] = LAYOUT_ansi_68(
     KC_GRV,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   _______,            _______,
-    CT_TAB,   KC_DEL,   KC_END,   KC_UP,    KC_PGUP,  KC_PGDN,  _______,  _______,  _______,  _______,  KC_WH_U,  KC_PGUP,  KC_PGDN,  _______,            KC_END,
-    KC_ACL0,  KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_BSPC,  KC_BSPC,  M_EN_SET, KC_MS_U,  M_JP_SET, KC_WH_D, CT_SPACE,            _______,            _______,
+    CT_TAB,   KC_DEL,   KC_END,   KC_UP,    KC_PGUP,  KC_PGDN,  _______,  _______,  _______,  _______,  KC_WH_U,  _______,  _______,  _______,            KC_END,
+    KC_ACL0,  KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_BSPC,  KC_BSPC,  M_EN_SET, KC_MS_U,  M_JP_SET, KC_WH_D, _______,            _______,            _______,
     _______,  CM_Z,     CM_X,     CM_C,     CM_V,     KC_BTN1,  KC_BTN1,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_ACL0,                      _______,  _______,  _______,
     _______,MO(MAC_NUM),_______,                                KC_ENT,                              LSFT(KC_F10),KC_ACL0,  KC_BTN2,  _______,  _______,  _______),
 
 [WIN_CAPS] = LAYOUT_ansi_68(
     KC_GRV,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   _______,            _______,
-    CT_TAB,   KC_DEL,   KC_END,   KC_UP,    CT_PGUP,  CT_PGDN,  CT_Y,     _______,  _______,  _______,  KC_WH_U,  KC_PGUP,  KC_PGDN,  _______,            KC_END,
-    KC_ACL0,  KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_BSPC,  KC_BSPC,  W_EN_SET, KC_MS_U,  W_JP_SET, KC_WH_D,  SF_CAPS,            _______,            _______,
+    CT_TAB,   KC_DEL,   KC_END,   KC_UP,    CT_PGUP,  CT_PGDN,  CT_Y,     _______,  _______,  _______,  KC_WH_U,  _______,  _______,  _______,            KC_END,
+    KC_ACL0,  KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_BSPC,  KC_BSPC,  W_EN_SET, KC_MS_U,  W_JP_SET, KC_WH_D,  _______,            _______,            _______,
     _______,  CT_Z,     CT_X,     CT_C,     CT_V,     KC_BTN1,  KC_BTN1,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_ACL0,                      _______,  _______,  _______,
     _______,MO(WIN_NUM),_______,                                KC_ENT,                              LSFT(KC_F10),KC_ACL0,  KC_BTN2,  _______,  _______,  _______),
 
@@ -248,7 +248,7 @@ MO(WIN_CAPS), KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J, 
 [MAC_RSFT] = LAYOUT_ansi_68(
     KC_TILD,  SF_1,     KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   _______,            _______,
     _______,  KC_DEL,   SF_END,   KC_UP,    CM_R,     CM_T,     _______,  _______,  _______,  _______,  KC_WH_U,  KC_PGUP,  KC_PGDN,  _______,            _______,
-    _______,  SF_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_BSPC,  KC_BSPC,  _______,  SF_UP,    KC_WH_L,  KC_WH_D,  KC_WH_R,            _______,            _______,
+    _______,  SF_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_BSPC,  KC_BSPC,  _______,  SF_UP,    _______,  KC_WH_D,  _______,            _______,            _______,
     _______,  CM_Z,     CM_X,     CM_C,     CM_V,     _______,  _______,  SF_LEFT,  SF_DOWN,  SF_RGHT,  SF_SLSH,                      _______,  _______,  _______,
     _______,  _______,  _______,                                _______,                                _______,  _______,  _______,  _______,  _______,  _______),
 
@@ -256,7 +256,7 @@ MO(WIN_CAPS), KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J, 
 [WIN_RSFT] = LAYOUT_ansi_68(
     KC_TILD,  SF_1,     KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   _______,            _______,
     _______,  KC_DEL,   SF_END,   KC_UP,    CT_R,     CT_T,     _______,  _______,  _______,  _______,  KC_WH_U,  KC_PGUP,  KC_PGDN,  _______,            _______,
-    _______,  SF_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_BSPC,  KC_BSPC,  _______,  SF_UP,    KC_WH_L,  KC_WH_D,  KC_WH_R,            _______,            _______,
+    _______,  SF_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_BSPC,  KC_BSPC,  _______,  SF_UP,    _______,  KC_WH_D,  _______,            _______,            _______,
     _______,  CT_Z,     CT_X,     CT_C,     CT_V,     _______,  _______,  SF_LEFT,  SF_DOWN,  SF_RGHT,  SF_SLSH,                      _______,  _______,  _______,
     _______,  _______,  _______,                                _______,                                _______,  _______,  _______,  _______,  _______,  _______),
 
