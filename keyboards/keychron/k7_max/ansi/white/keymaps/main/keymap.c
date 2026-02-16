@@ -316,7 +316,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     /*-zプレフィックス z直後のキーを先に捕まえる------------------------------------*/
     if (zp.waiting) {
         zp.waiting = false; // 解除
-        // ここからマクロを定義
+        // ここからマクロを定義 ※win/macで要設定
         switch (keycode) {
             // 【】
             case KC_LBRC:
@@ -328,14 +328,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 wait_ms(20);
                 tap_code16(KC_LEFT);
                 return false; // 処理済み
-            // そのた
+            // 通常
             case KC_C: // ◯
+            case KC_B: // ●
             case KC_X: // ※
             case KC_H: // ←
             case KC_J: // ↓
             case KC_K: // ↑
             case KC_L: // →
                 tap_code16(keycode);
+                wait_ms(20);
+                tap_code16(KC_SPC);
+                wait_ms(20);
+                tap_code16(KC_ENT);
+                return false; // 処理済み
+            // 代替（macの都合上）c
+            case KC_SLSH: // ／
+                tap_code16(KC_S);   // 代替
                 wait_ms(20);
                 tap_code16(KC_SPC);
                 wait_ms(20);
@@ -348,6 +357,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 wait_ms(20);
                 tap_code16(KC_ENT);
                 return false; // 処理済み
+            case KC_Y: // Year ※年変わったら書き直す
+                tap_code16(KC_2);
+                tap_code16(KC_0);
+                tap_code16(KC_2);
+                tap_code16(KC_5);
         }
     }
 
@@ -372,11 +386,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 enter_jp_only();
                 wait_ms(20);
                 tap_code16(KC_LEFT);
-            // shiftあり（win）
+            // shiftあり（win）※winで要設定
             } else if (layer_state & (1UL<<WIN_BASE)) {
-                tap_code16(KC_Z);
+                tap_code16(KC_LBRC);    // '{'
+                tap_code16(KC_RBRC);    // '}'
                 wait_ms(20);
-                tap_code16(KC_LBRC);
+                unregister_code(KC_LSFT);
                 wait_ms(20);
                 tap_code16(KC_SPC);
                 wait_ms(20);
@@ -511,7 +526,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 
     /*-特殊な条件-----------------------------------------*/
-    /* win アプリ起動 */
+    /* win アプリ起動 ※winで要設定 */
     if (layer_state & (1UL<<WIN_BASE)
         && record->event.pressed
         && get_mods() & (MOD_MASK_GUI)

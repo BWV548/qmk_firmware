@@ -21,3 +21,6 @@
 
 // 加速＋低速の混合モードを有効化
 #define MK_COMBINED
+
+/* チャタリング防止 */
+#define DEBOUNCE 12
