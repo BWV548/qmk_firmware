@@ -355,11 +355,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 wait_ms(20);
                 tap_code16(KC_ENT);
                 return false; // 処理済み
-            case KC_Y: // Year ※年変わったら書き直す
-                tap_code16(KC_2);
-                tap_code16(KC_0);
-                tap_code16(KC_2);
-                tap_code16(KC_5);
         }
     }
 
